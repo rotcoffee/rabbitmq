@@ -3,8 +3,10 @@ FROM python:3.10
 WORKDIR /app
 
 RUN pip install pika
+RUN curl -o /usr/local/bin/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
+    chmod +x /usr/local/bin/wait-for-it.sh
 
 COPY receive.py .
-COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
+# COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
 
 CMD ["python", "./receive.py"]
