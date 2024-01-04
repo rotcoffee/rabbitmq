@@ -1,0 +1,10 @@
+FROM python:3.10
+
+WORKDIR /app
+
+RUN pip install pika
+
+COPY send.py .
+COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
+
+CMD ["python", "./send.py"]

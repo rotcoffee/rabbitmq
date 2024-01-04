@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    ports:
+      - "5672:5672"  # AMQP 포트
+      - "15672:15672"  # 관리자 포트
+    environment:
+      RABBITMQ_DEFAULT_USER: koast
+      RABBITMQ_DEFAULT_PASS: koast
+
+  sender:
+    build: ./sender
+    environment:
+      PYTHONUNBUFFERED: 1
+    depends_on:
+      - rabbitmq
+    command: /usr/local/bin/wait-for-it.sh rabbitmq:5672 -- python send.py
+
+  receiver:
+    build: ./receiver
+    environment:
+      PYTHONUNBUFFERED: 1
+    depends_on:
+      - rabbitmq
+    command: /usr/local/bin/wait-for-it.sh rabbitmq:5672 -- python receive.py
