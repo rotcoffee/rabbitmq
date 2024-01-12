@@ -26,3 +26,5 @@ RabbitMQ는 AMQP(Advanced Message Queuing Protocol)를 기반으로 한 오픈 �
 RabbitMQ는 메시지 지향 미들웨어 시스템으로, 다양한 애플리케이션 및 서비스 간의 효율적인 통신을 가능하게 하며, 대기열(Queue)을 통한 메시지 처리를 지원하여 안정적인 시스템 통합을 도와줍니다.
 
 ChatGPT3.5를 사용하여 학습주제 선정, 코드 작성, README 작성을 수행했습니다.
+
+![](./i_stole.jpg)
